@@ -56,23 +56,23 @@
       margin-bottom: 28vh;
     }
 
-    /* ── メンバー横並び ── */
+    /* ── メンバークラスター 4/3/2 ── */
     .hero-players {
       position: absolute;
       bottom: 0;
-      left: 0;
-      right: 0;
-      height: 72%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 520px;
+      height: 80vh;
       pointer-events: none;
       z-index: 1;
+      overflow: visible;
     }
 
     .hero-player-item {
-      flex: 1;
-      height: 100%;
+      position: absolute;
+      bottom: 0;
+      width: 130px;
     }
 
     .hero-player-item img {
@@ -82,10 +82,29 @@
       object-position: bottom center;
     }
 
+    /* 前列 2人: 最大・最前面 ─ 中央に隙間なく配置 */
+    .hero-player-item:nth-child(1) { left:  65px; bottom:    0; height: 66vh; z-index: 9; }
+    .hero-player-item:nth-child(2) { left: 325px; bottom:    0; height: 66vh; z-index: 8; }
+
+    /* 後列 4人: 最小・最背面 ─ 全幅に隙間なく配置 */
+    .hero-player-item:nth-child(6) { left:   0px; bottom: 8vh; height: 38vh; z-index: 6; }
+    .hero-player-item:nth-child(7) { left: 130px; bottom: 8vh; height: 38vh; z-index: 6; }
+    .hero-player-item:nth-child(8) { left: 260px; bottom: 8vh; height: 38vh; z-index: 6; }
+    .hero-player-item:nth-child(9) { left: 390px; bottom: 8vh; height: 38vh; z-index: 6; }
+
+    /* 中列 3人: 中段に隙間なく配置 */
+    .hero-player-item:nth-child(3) { left:  65px; bottom: 16vh; height: 52vh; z-index: 4; }
+    .hero-player-item:nth-child(4) { left: 195px; bottom: 16vh; height: 52vh; z-index: 4; }
+    .hero-player-item:nth-child(5) { left: 325px; bottom: 16vh; height: 52vh; z-index: 4; }
+
+    
+
     @media (max-width: 768px) {
-      .hero-players { height: 50%; }
-      .hero-content { margin-bottom: 18vh; }
-      .hero-player-item:nth-child(n+6) { display: none; }
+      .hero-content { margin-bottom: 26vh; }
+      .hero-players {
+        transform: translateX(-50%) scale(0.52);
+        transform-origin: bottom center;
+      }
     }
 
     .hero-eyebrow {

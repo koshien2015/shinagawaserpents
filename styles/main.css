@@ -122,18 +122,20 @@ img { display: block; max-width: 100%; }
 
   .nav-links {
     position: fixed;
-    top: var(--nav-h); left: 0; right: 0;
+    top: 0; left: 0; right: 0;
     flex-direction: column;
     gap: 0;
     background: #0d0d0d;
     border-bottom: 1px solid var(--border);
     padding: 8px 0;
-    transform: translateY(-110%);
+    /* top:0 起点から -100%-1px 上げることで完全に画面外へ */
+    transform: translateY(calc(-100% - 1px));
     transition: transform 0.3s ease;
     z-index: 99;
   }
 
-  .nav-links.open { transform: translateY(0); }
+  /* 開いたときはナビバーの高さ分だけ下にずらす */
+  .nav-links.open { transform: translateY(var(--nav-h)); }
 
   .nav-links li a {
     display: block;
