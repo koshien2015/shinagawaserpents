@@ -56,13 +56,13 @@
       margin-bottom: 28vh;
     }
 
-    /* ── メンバー横並び（仮置き） ── */
+    /* ── メンバー横並び ── */
     .hero-players {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 68%;
+      height: 72%;
       display: flex;
       align-items: flex-end;
       justify-content: center;
@@ -73,66 +73,18 @@
     .hero-player-item {
       flex: 1;
       height: 100%;
-      position: relative;
-      overflow: hidden;
-      /* 上端フェード（透過PNGなら不要になる） */
-      -webkit-mask-image: linear-gradient(to top, black 55%, transparent 100%);
-      mask-image:         linear-gradient(to top, black 55%, transparent 100%);
-    }
-
-    /* 左端の人：左側もフェード */
-    .hero-player-item:first-child {
-      -webkit-mask-image:
-        linear-gradient(to right, transparent 0%, black 40%),
-        linear-gradient(to top,   black 55%,       transparent 100%);
-      -webkit-mask-composite: destination-in;
-      mask-image:
-        linear-gradient(to right, transparent 0%, black 40%),
-        linear-gradient(to top,   black 55%,       transparent 100%);
-      mask-composite: intersect;
-    }
-
-    /* 右端の人：右側もフェード */
-    .hero-player-item:last-child {
-      -webkit-mask-image:
-        linear-gradient(to left,  transparent 0%, black 40%),
-        linear-gradient(to top,   black 55%,       transparent 100%);
-      -webkit-mask-composite: destination-in;
-      mask-image:
-        linear-gradient(to left,  transparent 0%, black 40%),
-        linear-gradient(to top,   black 55%,       transparent 100%);
-      mask-composite: intersect;
     }
 
     .hero-player-item img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      opacity: 0.65;
-      /* 透過PNGに差し替えたらこの filter は消す */
-      filter: grayscale(30%);
-    }
-
-    /* 仮置きラベル */
-    .hero-placeholder-note {
-      position: absolute;
-      bottom: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.25);
-      white-space: nowrap;
-      z-index: 3;
-      pointer-events: none;
+      object-fit: contain;
+      object-position: bottom center;
     }
 
     @media (max-width: 768px) {
-      .hero-players { height: 45%; }
-      .hero-content { margin-bottom: 16vh; }
-      /* スマホは人数を減らして見やすく */
+      .hero-players { height: 50%; }
+      .hero-content { margin-bottom: 18vh; }
       .hero-player-item:nth-child(n+6) { display: none; }
     }
 
@@ -282,9 +234,11 @@
     }
 
     .activity-icon {
-      font-size: 2rem;
-      margin-bottom: 16px;
+      width: 32px;
+      height: 32px;
+      margin: 0 auto 16px;
       display: block;
+      color: var(--red);
     }
 
     .activity-card h4 {
@@ -326,19 +280,17 @@
   <section class="hero">
     <div class="hero-accent"></div>
 
-    <!-- 仮置き：透過PNGができたら各 img の src を差し替えるだけ -->
     <div class="hero-players">
-      <div class="hero-player-item"><img src="images/introduce_each_member/fujimoto.JPG"  alt="藤本"></div>
-      <div class="hero-player-item"><img src="images/introduce_each_member/hagiwara.JPG"  alt="萩原"></div>
-      <div class="hero-player-item"><img src="images/introduce_each_member/katopopo.JPG"  alt="加藤"></div>
-      <div class="hero-player-item"><img src="images/introduce_each_member/hamada.JPG"    alt="濵田"></div>
-      <div class="hero-player-item"><img src="images/introduce_each_member/kosugi.JPG"    alt="小杉"></div>
-      <div class="hero-player-item"><img src="images/introduce_each_member/matukawa.JPG"  alt="松川"></div>
-      <div class="hero-player-item"><img src="images/introduce_each_member/fujita.JPG"    alt="藤田"></div>
-      <div class="hero-player-item"><img src="images/introduce_each_member/terada.JPG"    alt="寺田"></div>
-      <div class="hero-player-item"><img src="images/introduce_each_member/shima.JPG"     alt="島"></div>
+      <div class="hero-player-item"><img src="images/introduce_each_member/fujimoto_transparent.png"  alt="藤本"></div>
+      <div class="hero-player-item"><img src="images/introduce_each_member/hagiwara_transparent.png"  alt="萩原"></div>
+      <div class="hero-player-item"><img src="images/introduce_each_member/kato_transparent.png"      alt="加藤"></div>
+      <div class="hero-player-item"><img src="images/introduce_each_member/hamada_transparent.png"    alt="濵田"></div>
+      <div class="hero-player-item"><img src="images/introduce_each_member/kosugi_transparent.png"    alt="小杉"></div>
+      <div class="hero-player-item"><img src="images/introduce_each_member/matsukawa_transparent.png" alt="松川"></div>
+      <div class="hero-player-item"><img src="images/introduce_each_member/fujita_transparent.png"    alt="藤田"></div>
+      <div class="hero-player-item"><img src="images/introduce_each_member/terada_transparent.png"    alt="寺田"></div>
+      <div class="hero-player-item"><img src="images/introduce_each_member/shima_transparent.png"     alt="島"></div>
     </div>
-    <span class="hero-placeholder-note">PLACEHOLDER — 透過PNGに差し替え予定</span>
 
     <div class="hero-content">
       <p class="hero-eyebrow">Cap Baseball Team — Tokyo</p>
@@ -394,7 +346,7 @@
 
       <a href="leagu.html" style="text-decoration:none; color:inherit;">
         <div class="activity-card">
-          <span class="activity-icon">🏆</span>
+          <svg class="activity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12M6 3v6a6 6 0 0 0 12 0V3M6 3H4M18 3h2M8 21h8M12 15v6"/></svg>
           <h4>リーグ戦戦績</h4>
           <p>2025年春 2部B優勝。現在1部で奮戦中。</p>
           <span class="btn btn-outline" style="display:inline-block; font-size:0.8rem; padding:8px 20px;">詳しく見る</span>
@@ -403,7 +355,7 @@
 
       <a href="taikai.html" style="text-decoration:none; color:inherit;">
         <div class="activity-card">
-          <span class="activity-icon">⚔️</span>
+          <svg class="activity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <h4>大会出場</h4>
           <p>東大カップ優勝など、各地の大会に参戦。</p>
           <span class="btn btn-outline" style="display:inline-block; font-size:0.8rem; padding:8px 20px;">詳しく見る</span>
@@ -412,7 +364,7 @@
 
       <a href="member.html" style="text-decoration:none; color:inherit;">
         <div class="activity-card">
-          <span class="activity-icon">👥</span>
+          <svg class="activity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="7" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="17" cy="7" r="3" stroke-dasharray="2 1"/><path d="M21 21v-2a4 4 0 0 0-3-3.87" stroke-dasharray="2 1"/></svg>
           <h4>メンバー一覧</h4>
           <p>個性豊かな選手たちのプロフィールはこちら。</p>
           <span class="btn btn-outline" style="display:inline-block; font-size:0.8rem; padding:8px 20px;">詳しく見る</span>
@@ -421,7 +373,7 @@
 
       <a href="SNS.html" style="text-decoration:none; color:inherit;">
         <div class="activity-card">
-          <span class="activity-icon">📡</span>
+          <svg class="activity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
           <h4>SNS・連絡先</h4>
           <p>X / YouTube / Gmail でチームをフォロー。</p>
           <span class="btn btn-outline" style="display:inline-block; font-size:0.8rem; padding:8px 20px;">詳しく見る</span>
